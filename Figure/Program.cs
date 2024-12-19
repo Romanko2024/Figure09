@@ -101,4 +101,36 @@ class Rhomb : Figure
     }
 }
 
+public class MainForm : Form
+{
+    private Figure figure;
+
+    public MainForm()
+    {
+        this.Text = "Figure Animation";
+        this.Size = new Size(800, 800);
+        this.Paint += MainForm_Paint;
+    }
+
+    private void MainForm_Paint(object sender, PaintEventArgs e)
+    {
+        Graphics g = e.Graphics;
+        Color backgroundColor = this.BackColor;
+
+        figure = new Circle(100, 200, 50);
+        figure.MoveRight(g, backgroundColor, 300);
+
+        figure = new Square(200, 300, 100);
+        figure.MoveRight(g, backgroundColor, 300);
+
+        figure = new Rhomb(300, 400, 120, 80);
+        figure.MoveRight(g, backgroundColor, 300);
+    }
+
+    [STAThread]
+    public static void Main()
+    {
+        Application.Run(new MainForm());
+    }
+}
 
