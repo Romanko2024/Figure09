@@ -24,5 +24,24 @@ abstract class Figure
             CenterX += step; //змінити координату
         }
     }
+}
 
+class Circle : Figure
+{
+    public int Radius { get; set; }
+
+    public Circle(int x, int y, int radius) : base(x, y)
+    {
+        Radius = radius;
+    }
+
+    public override void DrawBlack(Graphics g)
+    {
+        g.FillEllipse(Brushes.Black, CenterX - Radius, CenterY - Radius, Radius * 2, Radius * 2);
+    }
+
+    public override void HideDrawingBackGround(Graphics g, Color backgroundColor)
+    {
+        g.FillEllipse(new SolidBrush(backgroundColor), CenterX - Radius, CenterY - Radius, Radius * 2, Radius * 2);
+    }
 }
