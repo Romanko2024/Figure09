@@ -45,3 +45,23 @@ class Circle : Figure
         g.FillEllipse(new SolidBrush(backgroundColor), CenterX - Radius, CenterY - Radius, Radius * 2, Radius * 2);
     }
 }
+
+class Square : Figure
+{
+    public int SideLength { get; set; }
+
+    public Square(int x, int y, int sideLength) : base(x, y)
+    {
+        SideLength = sideLength;
+    }
+
+    public override void DrawBlack(Graphics g)
+    {
+        g.FillRectangle(Brushes.Black, CenterX - SideLength / 2, CenterY - SideLength / 2, SideLength, SideLength);
+    }
+
+    public override void HideDrawingBackGround(Graphics g, Color backgroundColor)
+    {
+        g.FillRectangle(new SolidBrush(backgroundColor), CenterX - SideLength / 2, CenterY - SideLength / 2, SideLength, SideLength);
+    }
+}
