@@ -1,5 +1,5 @@
 ﻿using System.Drawing;
-
+using System.Windows.Forms;
 abstract class Figure
 {
     protected int CenterX { get; set; }
@@ -100,3 +100,5 @@ class Rhomb : Figure
         g.FillPolygon(new SolidBrush(backgroundColor), points);
     }
 }
+
+
