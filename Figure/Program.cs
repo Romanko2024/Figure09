@@ -65,3 +65,38 @@ class Square : Figure
         g.FillRectangle(new SolidBrush(backgroundColor), CenterX - SideLength / 2, CenterY - SideLength / 2, SideLength, SideLength);
     }
 }
+
+class Rhomb : Figure
+{
+    public int HorDiagLen { get; set; }
+    public int VertDiagLen { get; set; }
+
+    public Rhomb(int x, int y, int horDiagLen, int vertDiagLen) : base(x, y)
+    {
+        HorDiagLen = horDiagLen;
+        VertDiagLen = vertDiagLen;
+    }
+
+    public override void DrawBlack(Graphics g)
+    {
+        //4 точки ромба верхня права нижня ліва
+        Point[] points = {
+            new Point(CenterX, CenterY - VertDiagLen / 2),
+            new Point(CenterX + HorDiagLen / 2, CenterY),
+            new Point(CenterX, CenterY + VertDiagLen / 2),
+            new Point(CenterX - HorDiagLen / 2, CenterY)
+        };
+        g.FillPolygon(Brushes.Black, points);
+    }
+
+    public override void HideDrawingBackGround(Graphics g, Color backgroundColor)
+    {
+        Point[] points = {
+            new Point(CenterX, CenterY - VertDiagLen / 2),
+            new Point(CenterX + HorDiagLen / 2, CenterY),
+            new Point(CenterX, CenterY + VertDiagLen / 2),
+            new Point(CenterX - HorDiagLen / 2, CenterY)
+        };
+        g.FillPolygon(new SolidBrush(backgroundColor), points);
+    }
+}
